@@ -1,0 +1,84 @@
+# Context – PostBoard Project
+
+## 🎯 Project Overview
+PostBoard is a mini project created as a showcase and practice app for Fullstack skills.  
+It focuses on **Laravel + Inertia.js + React + TailwindCSS** and demonstrates core concepts like authentication, CRUD, authorization, validation, and API integration.
+
+The project is designed to be simple but clear enough to highlight backend best practices.
+
+---
+
+## 🛠️ Tech Stack
+- **Backend**: Laravel 12 (PHP 8.4+)
+- **Frontend**: Inertia.js + React (TypeScript optional)
+- **Styling**: Tailwind CSS
+- **Auth**: Starter Kit (Login, Register, Reset Password)
+- **Database**:SQLite (for demo)
+
+---
+
+## 📦 Features
+1. **Authentication**
+   - User registration & login
+   - Password reset flow
+
+2. **Posts CRUD**
+   - Create, Read, Update, Delete posts
+   - User ↔ Post relation (1-to-many)
+
+3. **Authorization**
+   - Policies: User can only edit/delete own posts
+   - Admin can manage all posts
+
+4. **Validation**
+   - Server-side validation for forms
+
+5. **Frontend**
+   - Dashboard with list of posts
+   - Simple form (create/edit/delete)
+   - Styled with Tailwind
+
+6. **API Endpoint**
+   - `/api/posts` returns JSON of latest posts with user info
+
+7. **Seeders**
+   - Factory to pre-generate users and posts for testing/demo
+
+---
+
+## 🚀 Goals
+- Highlight **Backend skills** (Laravel, Eloquent, Policies, Validation)
+- Show understanding of **Inertia.js & React integration**
+- Keep frontend simple but functional (Tailwind styling)
+- Have a small, demo-ready project to present in interviews
+
+---
+
+## 📌 Things to Focus On
+- Clean database design & Eloquent relations
+- Authentication & Authorization (Policies)
+- CRUD workflow with validation
+- Inertia integration (redirect, passing props, error handling)
+- Seeder for quick demo setup
+- API endpoint to show backend flexibility
+
+---
+
+## 🧑‍💻 Demo Flow
+1. Register/Login as a user
+2. Create a new Post → appears on Dashboard
+3. Edit / Delete only your posts (policy enforced)
+4. Visit `/api/posts` for JSON output
+5. Show clean UI (Tailwind + React via Inertia)
+
+---
+
+## ✅ Checklist Before Demo
+- [ ] Auth working
+- [ ] Posts table migrated
+- [ ] CRUD functional
+- [ ] Policy enforced
+- [ ] Inertia pages connected
+- [ ] Tailwind styling applied
+- [ ] Seeder ready
+- [ ] API endpoint working
