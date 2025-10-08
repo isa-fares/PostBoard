@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -9,7 +10,16 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
+        $user = Auth::user();
+        $userPosts = $user->posts()->latest()->take(5)->get();
+        $totalPosts = $user->posts()->count();
+        $recentPosts = \App\Models\Post::with('user')->latest()->take(5)->get();
+        
+        return Inertia::render('dashboard', [
+            'userPosts' => $userPosts,
+            'totalPosts' => $totalPosts,
+            'recentPosts' => $recentPosts,
+        ]);
     })->name('dashboard');
 
     // Posts CRUD Routes
