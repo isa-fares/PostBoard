@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create test user
+        // Create test user for easy login
         $testUser = User::firstOrCreate(
             ['email' => 'test@example.com'],
             [
@@ -24,15 +24,24 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Create additional users
-        User::factory(5)->create();
+        // Create additional users with verified emails
+        $users = User::factory(5)->create([
+            'email_verified_at' => now(),
+        ]);
 
         // Create posts for the test user
         \App\Models\Post::factory(3)->create([
             'user_id' => $testUser->id,
         ]);
 
-        // Create posts for other users
-        \App\Models\Post::factory(10)->create();
+        // Create posts for each user (2-4 posts per user)
+        foreach ($users as $user) {
+            \App\Models\Post::factory(rand(2, 4))->create([
+                'user_id' => $user->id,
+            ]);
+        }
+
+        $this->command->info('Database seeded successfully!');
+        $this->command->info('Test User - Email: test@example.com, Password: password');
     }
 }
