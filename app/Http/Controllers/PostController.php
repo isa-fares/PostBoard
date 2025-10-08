@@ -18,6 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Post::class);
+
         $posts = Post::with('user')
             ->latest()
             ->get();
@@ -32,6 +34,8 @@ class PostController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Post::class);
+
         return Inertia::render('Posts/Create');
     }
 
@@ -53,6 +57,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $this->authorize('view', $post);
+
         $post->load('user');
 
         return Inertia::render('Posts/Show', [
