@@ -7,7 +7,6 @@ import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -60,13 +59,13 @@ export default function Create() {
 
                         <div>
                             <Label htmlFor="content">Content</Label>
-                            <Textarea
+                            <textarea
                                 id="content"
                                 name="content"
                                 value={data.content}
-                                onChange={(e) => setData('content', e.target.value)}
+                                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setData('content', e.target.value)}
                                 rows={8}
-                                className="mt-1"
+                                className="mt-1 flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                 required
                             />
                             <InputError message={errors.content} className="mt-2" />
