@@ -14,9 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::firstOrCreate(
+        // Create test user
+        $testUser = User::firstOrCreate(
             ['email' => 'test@example.com'],
             [
                 'name' => 'Test User',
@@ -24,5 +23,16 @@ class DatabaseSeeder extends Seeder
                 'email_verified_at' => now(),
             ]
         );
+
+        // Create additional users
+        User::factory(5)->create();
+
+        // Create posts for the test user
+        \App\Models\Post::factory(3)->create([
+            'user_id' => $testUser->id,
+        ]);
+
+        // Create posts for other users
+        \App\Models\Post::factory(10)->create();
     }
 }

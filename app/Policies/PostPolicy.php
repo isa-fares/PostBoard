@@ -13,8 +13,7 @@ class PostPolicy
      */
     public function viewAny(User $user): bool
     {
-        // Any authenticated user can view the list of posts
-        return true;
+        return true; // All authenticated users can view posts
     }
 
     /**
@@ -22,8 +21,7 @@ class PostPolicy
      */
     public function view(User $user, Post $post): bool
     {
-        // Any authenticated user can view a single post
-        return true;
+        return true; // All authenticated users can view individual posts
     }
 
     /**
@@ -31,8 +29,7 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        // Any authenticated user can create posts
-        return true;
+        return true; // All authenticated users can create posts
     }
 
     /**
@@ -40,8 +37,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post): bool
     {
-        // Only the post owner can update it
-        return $user->id === $post->user_id;
+        return $user->id === $post->user_id; // Only post owner can update
     }
 
     /**
@@ -49,8 +45,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post): bool
     {
-        // Only the post owner can delete it
-        return $user->id === $post->user_id;
+        return $user->id === $post->user_id; // Only post owner can delete
     }
 
     /**
@@ -58,8 +53,7 @@ class PostPolicy
      */
     public function restore(User $user, Post $post): bool
     {
-        // Only the post owner can restore it
-        return $user->id === $post->user_id;
+        return $user->id === $post->user_id; // Only post owner can restore
     }
 
     /**
@@ -67,7 +61,6 @@ class PostPolicy
      */
     public function forceDelete(User $user, Post $post): bool
     {
-        // Only the post owner can force delete it
-        return $user->id === $post->user_id;
+        return $user->id === $post->user_id; // Only post owner can force delete
     }
 }
