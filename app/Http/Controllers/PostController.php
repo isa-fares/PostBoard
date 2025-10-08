@@ -25,7 +25,10 @@ class PostController extends Controller
             ->get();
 
         return Inertia::render('Posts/Index', [
-            'posts' => $posts
+            'posts' => $posts,
+            'auth' => [
+                'user' => Auth::user()
+            ]
         ]);
     }
 
